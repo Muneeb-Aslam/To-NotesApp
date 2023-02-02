@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1d1d1d;
+    font-family: "Inter";
+}
+body,
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.container button {
+    cursor: pointer;
+    height: 35px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    width: 100%;
+    border: none;
+    background: white;
+    border-radius: 8px;
+    color: #383838;
+}
+#forgot {
+    cursor: pointer;
+    color: #5f5f5f;
+    align-self: flex-end;
+    font-size: 0.75rem;
+}
+input {
+    outline: none;
+    height: 35px;
+    border: none;
+    background: #383838;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    width: 100%;
+    padding-left: 10px;
+    color: white;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 317px;
+    height: 460px;
+}
+.container {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputs {
+    width: 100%;
+    gap: 20px;
+}
+.button {
+    width: 100%;
+}
+.button button {
+    cursor: pointer;
+    height: 35px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    background: #222222;
+    color: white;
+}
+.button{
+    position: relative;
+    width: 100%;
+    background: #222222;
+    border: 1px solid #343434;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button img{
+    position: absolute;
+    left: 40%;
+    transform: translate(-50%);
+    background: #222222;
+    width: 20px;
+    height: 20px;
+}
+.continue {
+    color: #5f5f5f;
+    font-size: 0.75rem;
+    text-align: center; 
+}
+.signup {
+    color: #5f5f5f;
+    position: absolute;
+    bottom: 40px;
+    font-size: 0.75rem;
+}
+#signup,#signin{
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border: none;
+    color: white;
+}
+.text{
+    color: #888888;
+    font-size: .75rem;
+}
