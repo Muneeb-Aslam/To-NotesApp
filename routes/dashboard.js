@@ -1,5 +1,6 @@
-const router = require('express').Router
+const router = require('express').Router()
 
-router.get('/',(req,res)=>{
-    res.render('dashboard')
+router.get('/dashboard',(req,res)=>{
+    return res.render('dashboard')
 })
+module.exports = router

@@ -9,9 +9,10 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 
-app.get("/", require("./routes/login"));
-app.get("/register", require("./routes/register"));
-app.get("/forgot", require("./routes/forgot"));
-app.get("/dasboard", require("./routes/dashboard"));
+app.get("/", require("./Routes/login"));
+app.get('/login',(req,res)=> res.redirect('/'))
+app.get("/register", require("./Routes/register"));
+app.get("/forgot", require("./Routes/forgot"));
+app.get("/dashboard", require("./Routes/dashboard"));
 
 app.listen(port, () => console.log(`server is running at the port ${port}`));
