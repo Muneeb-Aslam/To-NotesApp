@@ -4,6 +4,7 @@
     box-sizing: border-box;
     background-color: #1d1d1d;
     font-family: "Inter";
+    text-decoration: none;
 }
 body,
 .inputs {
@@ -118,4 +119,7 @@ form {
 .text{
     color: #888888;
     font-size: .75rem;
+}
+a{
+    color: white;
 }
