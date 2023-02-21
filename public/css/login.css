@@ -123,3 +123,8 @@ form {
 a{
     color: white;
 }
+#error{
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}

@@ -5,7 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/login.css" />
-        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link
+            href="https://fonts.googleapis.com/css?family=Inter"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <title>Login</title>
     </head>
     <body>
@@ -13,20 +17,35 @@
             <div class="container">
                 <div class="title">Login</div>
                 <div class="inputs">
-                    <input type="email" name="email" placeholder="Email" />
-                    <input type="password" name="password" placeholder="Password" />
-                    <div id="forgot"><a href="/forgot">Forgot Your Password?</a></div>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>"
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value="<%= typeof password != 'undefined' ? password : '' %>"
+                    />
+                    <div id="forgot">
+                        <a href="/forgot">Forgot Your Password?</a>
+                    </div>
                     <button type="submit">Log in</button>
                 </div>
                 <div class="continue"><span>or continue with</span></div>
                 <div class="button">
-                    <img src="/images/google.png" alt=""><button><a href="/google">Log in</a></button>
+                    <img src="/images/google.png" alt="" /><button>
+                        <a href="/google">Log in</a>
+                    </button>
                 </div>
             </div>
         </form>
         <div class="signup">
             <div>
-                Don't have an account? <span><a href="/register">Sign up</a></span>
+                Don't have an account?
+                <span><a href="/register">Sign up</a></span>
             </div>
         </div>
     </body>

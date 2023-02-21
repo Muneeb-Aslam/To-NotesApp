@@ -5,30 +5,51 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/login.css" />
-        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link
+            href="https://fonts.googleapis.com/css?family=Inter"
+            rel="stylesheet"
+        />
         <title>Register</title>
     </head>
     <body>
         <form action="/register" method="post">
+            <div id="error">
+                <%= include ("./partials/messages"); %>
+            </div>
             <div class="container">
                 <div class="title">Register</div>
                 <div class="inputs">
-                    <input type="text" name="name" placeholder="Name" required/>
-                    <input type="email" name="email" placeholder="Email" required/>
-                    <input type="password" name="password" placeholder="Password" required/>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value="<%= typeof name != 'undefined' ? name : '' %>"
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>"
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value="<%= typeof password != 'undefined' ? password : '' %>"
+                    />
                     <button type="submit">Sign up</button>
                 </div>
                 <div class="continue"><span>or continue with</span></div>
                 <div class="button">
-                    <img src="/images/google.png" alt=""><button><a href="/google">Log in</a></button>
+                    <img src="/images/google.png" alt="" /><button>
+                        <a href="/google">Log in</a>
+                    </button>
                 </div>
             </div>
         </form>
         <div class="signup">
             <div>
-                Have an account? <span
-                    ><a href="/login">Sign in</a></span
-                >
+                Have an account? <span><a href="/login">Sign in</a></span>
             </div>
         </div>
     </body>

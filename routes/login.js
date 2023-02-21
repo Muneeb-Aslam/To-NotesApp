@@ -1,12 +1,8 @@
 const bodyparser=require('body-parser')
 const router = require('express').Router()
 require("dotenv").config()
-const { MongoClient } = require("mongodb");
-const URL = process.env.connectionstring
-// connection to database
-const client = new MongoClient(URL);
-client.connect();
-const database = client.db("Test");
+const User = require('../model/user')
+const bcrypt = require('bcryptjs')
 
 
 router.get('/',(req,res)=>{
@@ -23,24 +19,6 @@ router.get('/forgot',(req,res)=>{
 
 router.get('/register',(req,res)=>{
     res.render('register')
-})
-
-
-router.post('/register',async (req,res)=>{
-    const name = req.body.name
-    const username = req.body.email;
-    const password = req.body.password;
-    const user = { name: name,email:username,password:password};
-    try {
-        const collection = database.collection("Users");
-        const result = await collection.insertOne(user)
-        if(result.acknowledged)
-            res.redirect('/login')
-        else
-            res.send(404)
-    } catch (err) {
-        console.log(err);
-    }
 })
 
 router.post("/login", async (req, res) => {
@@ -66,5 +44,35 @@ router.post("/login", async (req, res) => {
     // } catch (err) {
     //     console.log(err);
     // }
-});
+})
+
+
+
+router.post('/register',async (req,res)=>{
+    const {name,email,password}= req.body; 
+    let errors = []
+    if(!name || !email || !password){
+        errors.push({msg:'Fill all the Fields'})
+    }
+
+    if(errors.length>0)
+        res.render('register',{errors,name,email,password})
+    else
+        {
+            User.findOne({email:email}).then(user=>{
+                console.log(user);
+                if(user){
+                    errors.push("User Already Exists")
+                    console.log("H");
+                    res.render('register',{errors,name,email,password})
+                }else{
+                    const newUser = new User({name,email,password})
+                    
+                    res.send("Add User")
+                }
+            })
+
+        }
+})
+
 module.exports = router
