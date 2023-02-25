@@ -3,6 +3,9 @@ const router = require("express").Router();
 require("dotenv").config();
 const User = require("../model/user");
 const bcrypt = require("bcryptjs");
+const passport = require('passport')
+const initialize = require('../config/passport')
+
 
 router.get("/", (req, res) => {
     res.render("login");
@@ -20,30 +23,12 @@ router.get("/register", (req, res) => {
     res.render("register");
 });
 
-router.post("/login", async (req, res) => {
-    const username = req.body.email;
-    const password = req.body.password;
-    const user = { name: username };
-    console.log(user);
-    // // const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN);
-    // try {
-    //     const collection = database.collection("Users");
-    //     const user = await collection.findOne({ name: username });
-    //     if (user != null) {
-    //         if (user["password"] == password) {
-    //             res.redirect('/dashboard')
-    //         } else
-    //             return res.json({
-    //                 status: "error",
-    //                 error: "Invalid Password....",
-    //             });
-    //     } else {
-    //         return res.json({ status: "error", error: "Invalid Username...." });
-    //     }
-    // } catch (err) {
-    //     console.log(err);
-    // }
-});
+router.post("/login", (req,res,next)=>
+    {passport.authenticate('local',{
+    successRedirect:'/dashboard',
+    failureRedirect:'/login',
+    failureFlash:true})(req,res,next)
+    });
 
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
@@ -65,6 +50,7 @@ router.post("/register", async (req, res) => {
                         if (err) throw err;
                         newUser.password = hash;
                         newUser.save().then((user) => {
+                            req.flash('success_msg',"You are now resgistered successfully")
                             res.redirect('login')
                         });
                     });
@@ -73,5 +59,7 @@ router.post("/register", async (req, res) => {
         });
     }
 });
+
+
 
 module.exports = router;
