@@ -5,4 +5,4 @@ HTML, CSS, JS
 Backend
 Node.JS, Express, MongoDB
 
-JWT Authentication, CRUD Operations
+Passport and Google OAtuh Authentication, CRUD Operations
